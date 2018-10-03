@@ -13,16 +13,17 @@ struct Student{
 
 Student* ADD();
 void PRINT(vector<Student*> students);
-void DELETE(vector<Student*>* students, string* str);
+void DELETE(vector<Student*> students, int id);
 
 int main()
 {
   bool exit = false;
-  char input[6];
+  char input[7];
   vector<Student*> students;
+  int idInput;
   while(!exit){
     cout << "Do you want to add, print, delete, or exit?" << endl;
-    cin.get(input, 6);
+    cin.get(input, 7);
     cin.clear();
     cin.ignore(100000, '\n');
     if(strcmp(input, "add") == 0){
@@ -32,7 +33,10 @@ int main()
       PRINT(students);
     }
     else if(strcmp(input, "delete") == 0){
-      DELETE(students*);
+      cin >> idInput;
+      cin.clear();
+      cin.ignore(100000, '\n');
+      DELETE(students, idInput);
     }
     else if(strcmp(input, "exit") == 0){
       exit = true;
@@ -49,12 +53,20 @@ Student* ADD(){
   Student* newStud = new Student();
   cout << "Enter first name: ";
   cin >> newStud->firstName;
+  cin.clear();
+  cin.ignore(100000, '\n');
   cout << "Enter last name: ";
   cin >> newStud->lastName;
+  cin.clear();
+  cin.ignore(100000, '\n');
   cout << "Enter id: ";
   cin >> newStud->id;
+  cin.clear();
+  cin.ignore(100000, '\n');
   cout << "Enter gpa: ";
   cin >> newStud->gpa;
+  cin.clear();
+  cin.ignore(100000, '\n');
   return newStud;
 }
 void PRINT(vector<Student*> students){
@@ -69,11 +81,12 @@ void PRINT(vector<Student*> students){
   }
 }
 
-void DELETE(vector<Student*>* students, string* str){
-  cout << "You entered the Print queue" << endl;
+void DELETE(vector<Student*> students, int id){
+  cout << "You entered the Delete queue" << endl;
   vector<Student*>::iterator it;
   for(it = students.begin(); it != students.end(); ++it){
-    if(strcmp((*it)->firstName + " " + (*it)->lastName, str){
+    if((*it)->id == id){
+      cout << "Delete" << endl;
 	students.erase(it);
 	return;
     }
