@@ -35,6 +35,7 @@ int main()//main method
     }
     else if(strcmp(input, "delete") == 0){//if input is delete...
       cout << "You entered the Delete queue" << endl;
+      cout << "Enter student id:";
       cin >> idInput;//get the id you want to delete
       cin.clear();
       cin.ignore(100000, '\n');
@@ -74,9 +75,9 @@ Student* ADD(){//add function
 void PRINT(vector<Student*> students){//print function
   cout << "You entered the Print queue" << endl;
   vector<Student*>::iterator it;//get a vetor student pointer itorator
-  for(it = students.begin(); it != students.end(); ++it){
-    cout << "Student name: " << (*it)->firstName;
-    cout << (*it)->lastName << endl;
+  for(it = students.begin(); it != students.end(); ++it){//iterates through the student vector
+    //following lines print out the students vector
+    cout << "Student name: " << (*it)->firstName << " " << (*it)->lastName << endl;
     cout << "Student ID: " << (*it)->id << endl;
     cout << "Student GPA: " << (*it)->gpa << endl;
     cout << endl;
@@ -84,13 +85,13 @@ void PRINT(vector<Student*> students){//print function
 }
 
 void DELETE(vector<Student*>* students, int id){
-  vector<Student*>::iterator it;
-  for(it = students->begin(); it != students->end(); ++it){
-    if((*it)->id == id){
-      delete *it;
-      students->erase(it);
-      return;
+  vector<Student*>::iterator it;//Student pointer iterator
+  for(it = students->begin(); it != students->end(); ++it){//iterates through students
+    if((*it)->id == id){//if the id of the student is eaqual to the one priviously entered...
+      delete *it;//delete the memory of it in heap
+      students->erase(it);//erase the index from student list
+      return;//return if found
     }
   }
-  cout << "That is not a student" << endl;
+  cout << "Invalid ID" << endl;//if the function reaches here the id was invalid.
 }
