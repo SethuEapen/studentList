@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 #include <string.h>
+#include <iomanip>
+
 //including the namespace
 using namespace std;
 
@@ -79,7 +81,7 @@ void PRINT(vector<Student*> students){//print function
     //following lines print out the students vector
     cout << "Student name: " << (*it)->firstName << " " << (*it)->lastName << endl;
     cout << "Student ID: " << (*it)->id << endl;
-    cout << "Student GPA: " << (*it)->gpa << endl;
+    cout << "Student GPA: " << fixed << setprecision(2) << (*it)->gpa << endl;
     cout << endl;
   }
 }
